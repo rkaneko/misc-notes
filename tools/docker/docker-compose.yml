@@ -1,0 +1,34 @@
+version: "3.3"
+
+services:
+  mkdocs_base: &mkdocs_base
+    container_name: "mkdocs"
+    image: dockerized-mkdocs
+    build:
+      context: ../../
+      dockerfile: ./tools/docker/mkdocs/Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ../..:/usr/src/app
+    working_dir: /usr/src/app
+
+  mkdocs_init:
+    <<: *mkdocs_base
+    command: ["bash", "-c", "mkdocs new public && chmod -R 777 ./public"]
+
+  mkdocs_build:
+    <<: *mkdocs_base
+    container_name: "mkdocs_build"
+    working_dir: /usr/src/app/public
+    command: ["bash", "-c", "mkdocs build --clean"]
+
+  mkdocs_serve:
+    <<: *mkdocs_base
+    container_name: "mkdocs_serve"
+    working_dir: /usr/src/app/public
+    command: ["mkdocs", "serve", "--dev-addr=0.0.0.0:8000"]
+    expose:
+      - "8000"
+    ports:
+      - "8900:8000"

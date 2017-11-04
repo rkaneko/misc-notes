@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  nginx:
+    container_name: "nginx_mkdocs"
+    image: mkdocs-bundle-nginx
+    build:
+      context: ../../
+      dockerfile: tools/docker/nginx/Dockerfile
+    ports:
+      - "8900:80"
+    expose:
+      - "80"
+    volumes:
+      - "./nginx/conf.d:/etc/nginx/conf.d"
+      - "../../public/site:/usr/share/nginx/html:ro"

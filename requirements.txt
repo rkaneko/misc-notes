@@ -1,0 +1,14 @@
+click==6.7
+fontawesome-markdown==0.2.6
+Jinja2==2.9.6
+livereload==2.5.1
+Markdown==2.6.9
+MarkupSafe==1.0
+mkdocs==0.17.1
+mkdocs-material==2.0.2
+Pygments==2.2.0
+pymdown-extensions==4.1
+python-markdown-math==0.3
+PyYAML==3.12
+six==1.11.0
+tornado==4.5.2
