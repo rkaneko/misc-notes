@@ -1,0 +1,79 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to ambient notes !!! \n \n#",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome_to_ambient_notes",
+            "text": "",
+            "title": "Welcome to ambient notes !!!"
+        },
+        {
+            "location": "/about/",
+            "text": "ambient note\n#\n\n\nThis site is for rkaneko's miscellaneous notes.\n\n\nAuthor\n#\n\n\n \nrkaneko",
+            "title": "About"
+        },
+        {
+            "location": "/about/#ambient_note",
+            "text": "This site is for rkaneko's miscellaneous notes.",
+            "title": "ambient note"
+        },
+        {
+            "location": "/about/#author",
+            "text": "rkaneko",
+            "title": "Author"
+        },
+        {
+            "location": "/help/",
+            "text": "How to create a note\n#\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nTheme\n#\n\n\nThis document's theme is \nsquidfunk/mkdocs-material\n.\n\n\nTo customize, see also \nmkdocs-material/customization/\n.\n\n\nProject layout\n#\n\n\n1\n2\n3\n4\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.\n\n\n\n\n\n\nCode highlight\n#\n\n\n1\n2\n3\nfunction\n \nblah\n(\nfoo\n)\n \n{\n\n  \nconsole\n.\nlog\n(\n`foo: \n${\nfoo\n}\n`\n);\n\n\n}\n\n\n\n\n\n\n\n1\n2\n3\n4\n5\nconst\n \nBlah\n \n=\n \nprops\n \n=>\n \n(\n\n  \n<\ndiv\n>\n\n    \nHello\n \nworld\n!\n\n  \n<\n/div>\n\n\n);\n\n\n\n\n\n\n\nMath\n#\n\n\n\n\nWarning\n\n\nThis function is not markdown standard, so you should follow the usage and dosage instructions.\n\n\n\n\nUsing \nMathJax\n\n\n\n\n\nP\\cdot Q = \\|P\\|\\|Q\\|\\cos\\alpha\n\n\n\n\n\nEmoji\n#\n\n\nSee \nEMOJI CHEAT SHEET\n\n\n\n\nRelease \n \n\n\n\n\nIcons\n#\n\n\nUsing \nFont Awesome\n's icons\n\n\n\n\nbug \n\n\n\n\nAdmonition\n#\n\n\n\n\nWarning\n\n\nThis function is not markdown standard, so you should follow the usage and dosage instructions.",
+            "title": "Help"
+        },
+        {
+            "location": "/help/#how_to_create_a_note",
+            "text": "For full documentation visit  mkdocs.org .",
+            "title": "How to create a note"
+        },
+        {
+            "location": "/help/#theme",
+            "text": "This document's theme is  squidfunk/mkdocs-material .  To customize, see also  mkdocs-material/customization/ .",
+            "title": "Theme"
+        },
+        {
+            "location": "/help/#project_layout",
+            "text": "1\n2\n3\n4 mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Project layout"
+        },
+        {
+            "location": "/help/#code_highlight",
+            "text": "1\n2\n3 function   blah ( foo )   { \n   console . log ( `foo:  ${ foo } ` );  }    1\n2\n3\n4\n5 const   Blah   =   props   =>   ( \n   < div > \n     Hello   world ! \n   < /div>  );",
+            "title": "Code highlight"
+        },
+        {
+            "location": "/help/#math",
+            "text": "Warning  This function is not markdown standard, so you should follow the usage and dosage instructions.   Using  MathJax   \nP\\cdot Q = \\|P\\|\\|Q\\|\\cos\\alpha",
+            "title": "Math"
+        },
+        {
+            "location": "/help/#emoji",
+            "text": "See  EMOJI CHEAT SHEET   Release",
+            "title": "Emoji"
+        },
+        {
+            "location": "/help/#icons",
+            "text": "Using  Font Awesome 's icons   bug",
+            "title": "Icons"
+        },
+        {
+            "location": "/help/#admonition",
+            "text": "Warning  This function is not markdown standard, so you should follow the usage and dosage instructions.",
+            "title": "Admonition"
+        },
+        {
+            "location": "/license/",
+            "text": "MIT License\n\n\nCopyright (c) 2017 Ryota Kaneko\n\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\n\nMIT License\n?",
+            "title": "License"
+        }
+    ]
+}
