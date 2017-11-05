@@ -32,13 +32,22 @@ jobs:
             cd public
             mkdocs build --clean
 
-      - store_artifacts:
-          path: public/site
-          prefix: site
+#      - store_artifacts:
+#          path: public/site
+#          prefix: site
+
+      - add_ssh_keys:
+          fingerprints:
+            - "a9:89:22:16:a5:f1:53:6d:ef:d7:47:f8:64:8a:57:88"
+
+      - run:
+          name: Deploy site to gh-pages
+          command: |
+            bash -c tools/ci/deploy_gh_pages.sh
 
     branches:
-        ignore:
-          - /draft-.*/
+        only:
+          - master
 
 # workflows:
 #   version: 2
@@ -46,6 +55,6 @@ jobs:
 #   build_deploy:
 #     jobs:
 #       - build:
-#         filters:
-#           branches:
-#             only: master
+#           filters:
+#             branches:
+#               only: master
