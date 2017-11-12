@@ -4,6 +4,8 @@ pages:
   - About: about.md
   - Help: help.md
   - License: license.md
+  - Programming:
+      - PaymentRequest API: programming/paymentrequest-api.md
 theme:
   name: "material"
   favicon: "static/image/ambient-favicon.ico"
