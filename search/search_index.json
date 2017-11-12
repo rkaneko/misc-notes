@@ -74,6 +74,166 @@
             "location": "/license/",
             "text": "MIT License\n\n\nCopyright (c) 2017 Ryota Kaneko\n\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\n\nMIT License\n?",
             "title": "License"
+        },
+        {
+            "location": "/programming/paymentrequest-api/",
+            "text": "Payment Request API\n#\n\n\nA preface of this notes\n#\n\n\nThis is notes I wrote when I read \nPayment Request API specification documentation\n as of November 11, 2017.\n\n\nAbstract\n#\n\n\n\n\nPayment Request API (PR API) specification standardizes an API to allow merchants to utilize one or more payment methods with minimal integration. User agents facilitate the payment flow between merchant and user.\n\n\n\n\n\n\nmerchants (i.e. web sites selling physical or digital goods)\n\n\nuser agents (e.g., browsers)\n\n\n\n\nStatus\n#\n\n\nPayment Request API specification document\n was published by the Web Payments Working Group as a \nGandidate Recommendation\n  and is intended to become a W3C Recommendation.\n\n\nAfter 32 October 2017\n, Candidate Recommendation is expected to advance to \nProposed Recommendation\n.\n\n\nIntroduction\n#\n\n\nUser agents (e.g. browsers) act as an intermediary between three parties in a transaction.\n\n\n\n\nthe payee\n\n\nthe payer\n\n\nthe payment method provider: (e.g.) credit card service providers\n\n\n\n\nThe details of how to fulfill a payment request for a given payment method are handled by \npayment handlers\n.\n\n\nThis API also enables web sites to take advantage of more secure payment schemes\n (e.g., tokenization and system-level authenticatioon) that are not possible with standard JavaScript libraries.\n\n\nGoals\n#\n\n\n\n\nAllow the user agent to act as intermediary between above three parties.\n\n\nStandardize the communicatioon flow between a merchant, user agent, and payment method provider.\n\n\nEnable payment method providers to bring more secure payment transaction to the web.\n\n\n\n\nOut of scopes\n#\n\n\n\n\nIntegrate \ndirectly\n with payment processors\n\n\n\n\nExamples of usage\n#\n\n\nThe developer needs to provide following 3 parameters to the \nPaymentRequest\n constructor.\n\n\n\n\nmethodData: sequence<PaymentMethodData>\n represents the payment method that the site supports\n\n\nPaymentMethodData\n\n\nexample\n\n\ndetails: PaymentMethodDetailsInit\n includes \ntotal cost\n, \na list of goods or services\n being purchased and \nshipping options\n.\n\n\nPaymentMethodDetailsInit\n\n\nexample\n\n\noptions: PaymentOptions\n that the site needs to delivery the good or service.\n\n\nPaymentOptions\n\n\n\n\nexample\n\n\n\n\n\n\nThe user clicks \"Buy` button. (initiating a payment process)\n\n\n\n\nPaymentRequest\n is constructed.\n\n\nThe site display the user via \nPaymentRequest#show()\n.\n\n\nThe user confirms request for payment.\n\n\nThe return value of \nPaymentRequest#show()\n resolves and pass \nPaymentResponse\n to the handler.\n\n\nThe site posts some parts of data of \nPaymentResponse\n back to a server.\n\n\n\n\nCalling \nPaymentResponse#complete()\n to finish payment interaction for the user agent \n\n\n\n\n\n\nRegistering event handlers of \nPaymentRequest\n, the site is given an oppotunity to update the payment request in response to user input.\n\n\n\n\n\n\ne.g. Providing additional shipping options, modifying their cost, removing items that cannot ship\n\n\n\n\n\n\nPaymentResponse\n\n\n\n\n\n\n\n\nBecause the simultaneous display of multiple PaymentRequest user interfaces might confuse the user, this specification limits the user agent to displaying one at a time via the show() method.\nIt is not possible to show multiple PaymentRequests at the same time within one user agent. If a PaymentRequest is already showing, calling show() \u2014from any Web site\u2014 will return a promise rejected with an \"AbortError\" DOMException\n\n\n\n\nPaymentRequest Interface\n#\n\n\nPaymentRequest#abort()\n#\n\n\n\n\nThe abort() method is called if a developer wishes to tell the user agent to abort the payment request and to tear down any user interface that might be shown. \n\n\nThis method can be called between after calling \nshow()\n and before that promise return value is resolved.\n\n\n\n\nPaymentRequest#canMakePayment()\n#\n\n\n\n\nIf the user agent (e.g. browser) supports payment methods supplied to the PaymentRequest constructor, it returns promised true.\n\n\nThe developer call this method before calling \nshow()\n.\n\n\n\n\nPaymentRequest\n's event handlers\n#\n\n\n\n\nonshippingaddresschange\n\n\nonshippingoptionchange\n\n\n\n\nLifecyle of the \nPaymentRequest\n#\n\n\n\n\nSee state transition figure on \nInternal Slots\n chapter.\n\n\n\n\nPaymentMethodData\n#\n\n\n\n\nPaymentMethodData#supportttedMethods\n's candidates is registered at \nRegistry of standardized payment methods\n.\n\n\nThe value of supportedMethods was changed from array to string, but the name was left as a plural to maintain compatibility with existing content on the Web.\n\n\n\n\n\n\nbasic-card\n: The \nBasic Card Payment\n\n\n\n\nPaymentCurrencyAmount\n#\n\n\n\n\nOne of members \ncurrencySystem\n is at risk of being removed\n.\n\n\n\n\nPayment details dictionaries\n#\n\n\n\n\ndisplayItems\n member\n\n\nItems that the user agent may display.\n\n\n\n\n\n\nIt is the developer's responsibility to verify that the total amount is the sum of these items.\n\n\n\n\n\n\nshippingOptions\n member\n\n\nShipping options for the user to choose from.\n\n\n\n\n\n\nAuthors should not set selected to true on more than one item. If more than one item in the sequence has selected set to true, then the user agent selects the last one in the sequence.\n\n\n\n\n\n\nmodifiers\n member\n\n\nThis member enables the developer to adjust the total amount based on payment method.\n\n\n\n\nPaymentDetailsInit dictionary\n#\n\n\n\n\nid\n member\n\n\nA free form identifiers for this payment request.\n\n\nIf empty, the user agent will generate a unique id using UUID.\n\n\ntotal\n member\n\n\nA non negative total amount for the payment request.\n\n\n\n\nPaymentDetailsUpdate dictionary\n#\n\n\n\n\nerror\n member\n\n\nThis can be used to explain following\n\n\nwhy goods cannot be shipped\n\n\nwhy no shipping options are available\n\n\n\n\n\n\ntotal\n member\n\n\nnon-negative amount.\n\n\n\n\nPaymentDetailsModifier dictionary\n#\n\n\nThis enables the developer to modify the \nPaymentDetailsBase\n data based on payment method identifier (selected by the user).\n\n\nPaymentShippingType enum\n#\n\n\n\n\nshipping\n: default\n\n\ndelivery\n\n\npickup\n: e.g. This could be the address for laundry pickup.\n\n\n\n\nPaymentOptions dictionary\n#\n\n\nThis provides information about the options desired for the payment request. (This is passed through PaymentRequest constructor.)\n\n\nPaymentItem dictionary\n#\n\n\nThis is used to indicate what the payment request is for and the value asked for.\n\n\nPaymentAddress interface\n#\n\n\nThis contains an \norganization\n member, so PaymentRequest API may be used for B2B.\n\n\nPaymentShippingOption\n#\n\n\nDevelopers can provide the user with one or more shipping options by calling the \nupdateWith()\n method in change event handlers.\n\n\nPaymentComplete enum\n#\n\n\n\n\nfail\n\n\nsuccess\n\n\nunknown\n\n\n\n\nPaymentResponse interface\n#\n\n\n\n\nA PaymentResponse is returned when a user has selected a payment method and approved a payment request.\n\n\n\n\n\n\nmethodName\n attribute: The payment method identifier for the payment method that the user selected.\n\n\ndetails\n attribute: An object \ngenerated by a payment method that a merchant can use to process or validate a transaction\n.\n\n\nDepending on the payment method.\n\n\nshippingAddress\n attribute\n\n\nshippingOption\n attribute\n\n\npayerName\n attribute\n\n\npaymerEmail\n attribute\n\n\npayerPhone\n attribute\n\n\nrequestId\n attribute: The corresponding payment request id that spawned this payment response.\n\n\ncomplete()\n method\n\n\nThis method can be called after the user has accepted the payment request and the acceptedPromise has been resolved.\n\n\nCalling this method tells the user agent that the payment interaction is over.\n\n\n\n\nPaymentRequest and iframe elements\n#\n\n\n\n\nTo indicate that a cross-origin iframe is allowed to invoke the payment request API, the allowpaymentrequest attribute can be specified on the iframe element.\n\n\n\n\nEvents\n#\n\n\nAlgorithms\n#\n\n\nSecurity Considerations\n#\n\n\n\n\nThe PaymentRequest API does \nnot directly support encryption of data fields\n.\n\n\nIndividual payment methods may choose to include support encrypted data but it is \nnot mandatory\n that all payment methods support this.\n\n\n\n\nPrivacy Considerations\n#\n\n\n\n\nThe user agent \nmust not share\n information about the user with a developer \nwithout user consent\n.",
+            "title": "PaymentRequest API"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#payment_request_api",
+            "text": "",
+            "title": "Payment Request API"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#a_preface_of_this_notes",
+            "text": "This is notes I wrote when I read  Payment Request API specification documentation  as of November 11, 2017.",
+            "title": "A preface of this notes"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#abstract",
+            "text": "Payment Request API (PR API) specification standardizes an API to allow merchants to utilize one or more payment methods with minimal integration. User agents facilitate the payment flow between merchant and user.    merchants (i.e. web sites selling physical or digital goods)  user agents (e.g., browsers)",
+            "title": "Abstract"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#status",
+            "text": "Payment Request API specification document  was published by the Web Payments Working Group as a  Gandidate Recommendation   and is intended to become a W3C Recommendation.  After 32 October 2017 , Candidate Recommendation is expected to advance to  Proposed Recommendation .",
+            "title": "Status"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#introduction",
+            "text": "User agents (e.g. browsers) act as an intermediary between three parties in a transaction.   the payee  the payer  the payment method provider: (e.g.) credit card service providers   The details of how to fulfill a payment request for a given payment method are handled by  payment handlers .  This API also enables web sites to take advantage of more secure payment schemes  (e.g., tokenization and system-level authenticatioon) that are not possible with standard JavaScript libraries.",
+            "title": "Introduction"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#goals",
+            "text": "Allow the user agent to act as intermediary between above three parties.  Standardize the communicatioon flow between a merchant, user agent, and payment method provider.  Enable payment method providers to bring more secure payment transaction to the web.",
+            "title": "Goals"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#out_of_scopes",
+            "text": "Integrate  directly  with payment processors",
+            "title": "Out of scopes"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#examples_of_usage",
+            "text": "The developer needs to provide following 3 parameters to the  PaymentRequest  constructor.   methodData: sequence<PaymentMethodData>  represents the payment method that the site supports  PaymentMethodData  example  details: PaymentMethodDetailsInit  includes  total cost ,  a list of goods or services  being purchased and  shipping options .  PaymentMethodDetailsInit  example  options: PaymentOptions  that the site needs to delivery the good or service.  PaymentOptions   example    The user clicks \"Buy` button. (initiating a payment process)   PaymentRequest  is constructed.  The site display the user via  PaymentRequest#show() .  The user confirms request for payment.  The return value of  PaymentRequest#show()  resolves and pass  PaymentResponse  to the handler.  The site posts some parts of data of  PaymentResponse  back to a server.   Calling  PaymentResponse#complete()  to finish payment interaction for the user agent     Registering event handlers of  PaymentRequest , the site is given an oppotunity to update the payment request in response to user input.    e.g. Providing additional shipping options, modifying their cost, removing items that cannot ship    PaymentResponse     Because the simultaneous display of multiple PaymentRequest user interfaces might confuse the user, this specification limits the user agent to displaying one at a time via the show() method.\nIt is not possible to show multiple PaymentRequests at the same time within one user agent. If a PaymentRequest is already showing, calling show() \u2014from any Web site\u2014 will return a promise rejected with an \"AbortError\" DOMException",
+            "title": "Examples of usage"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentrequest_interface",
+            "text": "",
+            "title": "PaymentRequest Interface"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentrequestabort",
+            "text": "The abort() method is called if a developer wishes to tell the user agent to abort the payment request and to tear down any user interface that might be shown.   This method can be called between after calling  show()  and before that promise return value is resolved.",
+            "title": "PaymentRequest#abort()"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentrequestcanmakepayment",
+            "text": "If the user agent (e.g. browser) supports payment methods supplied to the PaymentRequest constructor, it returns promised true.  The developer call this method before calling  show() .",
+            "title": "PaymentRequest#canMakePayment()"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentrequests_event_handlers",
+            "text": "onshippingaddresschange  onshippingoptionchange",
+            "title": "PaymentRequest's event handlers"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#lifecyle_of_the_paymentrequest",
+            "text": "See state transition figure on  Internal Slots  chapter.",
+            "title": "Lifecyle of the PaymentRequest"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentmethoddata",
+            "text": "PaymentMethodData#supportttedMethods 's candidates is registered at  Registry of standardized payment methods .  The value of supportedMethods was changed from array to string, but the name was left as a plural to maintain compatibility with existing content on the Web.    basic-card : The  Basic Card Payment",
+            "title": "PaymentMethodData"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentcurrencyamount",
+            "text": "One of members  currencySystem  is at risk of being removed .",
+            "title": "PaymentCurrencyAmount"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#payment_details_dictionaries",
+            "text": "displayItems  member  Items that the user agent may display.    It is the developer's responsibility to verify that the total amount is the sum of these items.    shippingOptions  member  Shipping options for the user to choose from.    Authors should not set selected to true on more than one item. If more than one item in the sequence has selected set to true, then the user agent selects the last one in the sequence.    modifiers  member  This member enables the developer to adjust the total amount based on payment method.",
+            "title": "Payment details dictionaries"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentdetailsinit_dictionary",
+            "text": "id  member  A free form identifiers for this payment request.  If empty, the user agent will generate a unique id using UUID.  total  member  A non negative total amount for the payment request.",
+            "title": "PaymentDetailsInit dictionary"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentdetailsupdate_dictionary",
+            "text": "error  member  This can be used to explain following  why goods cannot be shipped  why no shipping options are available    total  member  non-negative amount.",
+            "title": "PaymentDetailsUpdate dictionary"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentdetailsmodifier_dictionary",
+            "text": "This enables the developer to modify the  PaymentDetailsBase  data based on payment method identifier (selected by the user).",
+            "title": "PaymentDetailsModifier dictionary"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentshippingtype_enum",
+            "text": "shipping : default  delivery  pickup : e.g. This could be the address for laundry pickup.",
+            "title": "PaymentShippingType enum"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentoptions_dictionary",
+            "text": "This provides information about the options desired for the payment request. (This is passed through PaymentRequest constructor.)",
+            "title": "PaymentOptions dictionary"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentitem_dictionary",
+            "text": "This is used to indicate what the payment request is for and the value asked for.",
+            "title": "PaymentItem dictionary"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentaddress_interface",
+            "text": "This contains an  organization  member, so PaymentRequest API may be used for B2B.",
+            "title": "PaymentAddress interface"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentshippingoption",
+            "text": "Developers can provide the user with one or more shipping options by calling the  updateWith()  method in change event handlers.",
+            "title": "PaymentShippingOption"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentcomplete_enum",
+            "text": "fail  success  unknown",
+            "title": "PaymentComplete enum"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentresponse_interface",
+            "text": "A PaymentResponse is returned when a user has selected a payment method and approved a payment request.    methodName  attribute: The payment method identifier for the payment method that the user selected.  details  attribute: An object  generated by a payment method that a merchant can use to process or validate a transaction .  Depending on the payment method.  shippingAddress  attribute  shippingOption  attribute  payerName  attribute  paymerEmail  attribute  payerPhone  attribute  requestId  attribute: The corresponding payment request id that spawned this payment response.  complete()  method  This method can be called after the user has accepted the payment request and the acceptedPromise has been resolved.  Calling this method tells the user agent that the payment interaction is over.",
+            "title": "PaymentResponse interface"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#paymentrequest_and_iframe_elements",
+            "text": "To indicate that a cross-origin iframe is allowed to invoke the payment request API, the allowpaymentrequest attribute can be specified on the iframe element.",
+            "title": "PaymentRequest and iframe elements"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#events",
+            "text": "",
+            "title": "Events"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#algorithms",
+            "text": "",
+            "title": "Algorithms"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#security_considerations",
+            "text": "The PaymentRequest API does  not directly support encryption of data fields .  Individual payment methods may choose to include support encrypted data but it is  not mandatory  that all payment methods support this.",
+            "title": "Security Considerations"
+        },
+        {
+            "location": "/programming/paymentrequest-api/#privacy_considerations",
+            "text": "The user agent  must not share  information about the user with a developer  without user consent .",
+            "title": "Privacy Considerations"
         }
     ]
 }
