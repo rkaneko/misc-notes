@@ -6,6 +6,7 @@ pages:
   - License: license.md
   - Programming:
       - PaymentRequest API: programming/paymentrequest-api.md
+      - Terraform notes: programming/terraform.md
   - Design:
       - Jobs to be done: design/jobs-to-be-done.md
 theme:
