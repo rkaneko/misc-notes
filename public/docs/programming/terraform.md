@@ -84,3 +84,44 @@ e.g.
  Most SDN implementations have a **control layer** and **infrastructure layer**.
 
  Terraform provides interface with the control layers of SDN implementations e.g. AWS VPC and can **version and change networking configuration**.
+
+---
+## [Workspaces]()
+
+This was called `environment` in Terraform 0.9, however was changed to `workspace` considering comunity feedback.
+
+Use-cases are following
+
+- `production`, `staging`, `development`
+
+## [Resource Configuration](https://www.terraform.io/docs/configuration/resources.html)
+
+- The `resource` means a component of your infrastructure.
+- Low level components
+  - physical servers
+  - virtual machines
+  - containers
+- High level components
+  - email provider
+  - DNS record
+  - database provider
+
+### Meta-parameters
+
+- `count`
+  - Partial resources (e.g. `aws_instance`) support this meta-parameters.
+  - `${count.index}` means loop index.
+  - (On 2018/08/02 situation) version <= 0.11 doesn't support `count` in `module`. [#953](https://github.com/hashicorp/terraform/issues/953)
+  - Using `count` and map type variables, we can express loop-ish resource handling.
+  - If `count = 0`, the resource will not be created.
+  - In terraform, boolean value is converted to 0 or 1.
+  - https://blog.gruntwork.io/terraform-tips-tricks-loops-if-statements-and-gotchas-f739bbae55f9
+- `lifecycle`
+  - If you don't want to destory some resources, add `prevent_destroy = true`. e.g. `aws_route53`.
+
+## [Data Sources](https://www.terraform.io/docs/configuration/data-sources.html)
+
+- Use too define information outside of Terraform, or defined by another separate Terraform configuration(not including module).
+  - e.g. Predefined AWS EC2 instance
+
+
