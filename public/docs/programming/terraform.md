@@ -124,4 +124,40 @@ Use-cases are following
 - Use too define information outside of Terraform, or defined by another separate Terraform configuration(not including module).
   - e.g. Predefined AWS EC2 instance
 
+## Tips
 
+
+
+## FAQ
+
+- Q: How do we use `terraform plan` option `-target` for modules?
+- A: Consider [Resource Addressing](https://www.terraform.io/docs/internals/resource-addressing.html).
+
+```bash
+$ tree -d
+.
+`-- modules
+    |-- acm
+    |-- acm_validation
+    |-- route53
+    `-- s3
+
+# show the plan for acm module
+$ terraform plan -target=module.acm
+
+$ cat modules/acm
+resource "aws_acm_certificate" "cert" {
+  domain_name       = "${var.domain_name}"
+  validation_method = "DNS"
+}
+
+# show the plan for acm module 'cert' resource
+$ terraform plan -target=module.acm.aws_acm_certificate.cert
+```
+
+- Q: How do we use `terraform output` option `-module` for modules?
+- A: Just use the module name of the target.
+
+```bash
+$ terraform output -module=s3
+```
