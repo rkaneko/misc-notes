@@ -1,5 +1,6 @@
 site_name: ambient notes
-pages:
+docs_dir: docs
+nav:
   - Home: index.md
   - About: about.md
   - Help: help.md
@@ -20,10 +21,11 @@ theme:
      text: "Noto Sans JP"
      code: "Ubuntu Mono"
 markdown_extensions:
-  - codehilite(linenums=true)
+  - codehilite:
+      linenums: true
   - toc:
       # this indent should be 4!!!
-      permalink: "#"
+      permalink: true
       separator: "_"
   - mdx_math
   - fontawesome_markdown
