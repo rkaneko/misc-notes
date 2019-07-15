@@ -2,7 +2,7 @@
 
 
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="no-js">
   <head>
     
@@ -19,6 +19,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -28,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../static/image/ambient-favicon.ico">
-      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.2">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
     
     
       
@@ -36,20 +40,27 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-5b1b46901f.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-23f75ab9c7.palette.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#03a9f4">
       
     
     
-      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
     
     
       
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,400,400i,700|Ubuntu+Mono">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,400,400i,700|Ubuntu+Mono&display=fallback">
         <style>body,input{font-family:"Noto Sans JP","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Ubuntu Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -61,13 +72,14 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:600,800">
     
     
+      
+    
+    
   </head>
   
     
     
-    
-      <body data-md-color-primary="light-blue" data-md-color-accent="indigo">
-    
+    <body dir="ltr" data-md-color-primary="light-blue" data-md-color-accent="indigo">
   
     <svg class="md-svg">
       <defs>
@@ -75,9 +87,14 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#jobs_to_be_done_jtbd" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -90,34 +107,35 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
-            
+            <span class="md-header-nav__topic">
+              ambient notes
+            </span>
+            <span class="md-header-nav__topic">
               
-                <span class="md-header-nav__parent">
-                  Design
-                </span>
+                Jobs to be done
               
-            
-            Jobs to be done
+            </span>
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
-            
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
-      <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -131,7 +149,6 @@
     </div>
   </div>
 </div>
-          
         
       </div>
       
@@ -141,6 +158,9 @@
     
     <div class="md-container">
       
+        
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -149,12 +169,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="ambient notes" class="md-nav__button md-logo">
       
         <i class="md-icon">create</i>
       
-    </span>
+    </a>
     ambient notes
   </label>
   
@@ -274,7 +294,7 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
@@ -319,8 +339,8 @@
               
                 
                 
-                <h1 id="jobs_to_be_done_jtbd">Jobs to be done (JTBD)<a class="headerlink" href="#jobs_to_be_done_jtbd" title="Permanent link">#</a></h1>
-<h1 id="job_stories">Job stories<a class="headerlink" href="#job_stories" title="Permanent link">#</a></h1>
+                <h1 id="jobs_to_be_done_jtbd">Jobs to be done (JTBD)<a class="headerlink" href="#jobs_to_be_done_jtbd" title="Permanent link">&para;</a></h1>
+<h1 id="job_stories">Job stories<a class="headerlink" href="#job_stories" title="Permanent link">&para;</a></h1>
 <ul>
 <li>User storyはチームに流動性があり、プロダクトが成熟しているときにはうまくいきやすい。</li>
 <li>スクラッチから作る場合にはUser storyがうまくフィットするかは疑問がある。</li>
@@ -343,19 +363,19 @@
 <li>Job storyはゼロベースでイノベーションを起こしたいときにコンセプトとディシジョンメイキングをするときに使う手法と理解。</li>
 <li>機能が明確 or デザインが決まっている段階で使用するには遅いのではと<a href="https://jtbd.info/5-tips-for-writing-a-job-story-7c9092911fc9">この記事</a>を読んで感じる。</li>
 </ul>
-<h2 id="tips_for_better_job_stories">Tips for better job stories<a class="headerlink" href="#tips_for_better_job_stories" title="Permanent link">#</a></h2>
-<h3 id="refine_a_situation_by_adding_contextual_information">Refine A Situation By Adding Contextual Information<a class="headerlink" href="#refine_a_situation_by_adding_contextual_information" title="Permanent link">#</a></h3>
+<h2 id="tips_for_better_job_stories">Tips for better job stories<a class="headerlink" href="#tips_for_better_job_stories" title="Permanent link">&para;</a></h2>
+<h3 id="refine_a_situation_by_adding_contextual_information">Refine A Situation By Adding Contextual Information<a class="headerlink" href="#refine_a_situation_by_adding_contextual_information" title="Permanent link">&para;</a></h3>
 <p>シチュエーションに、よりコンテキストを加えると、顧客が製品や機能を使うことを遠ざけるあらゆる心配に対応するためのソリューションをデザインするのが容易になる。</p>
-<h3 id="job_stories_come_from_real_people_not_personas">Job Stories Come From Real People Not Personas<a class="headerlink" href="#job_stories_come_from_real_people_not_personas" title="Permanent link">#</a></h3>
+<h3 id="job_stories_come_from_real_people_not_personas">Job Stories Come From Real People Not Personas<a class="headerlink" href="#job_stories_come_from_real_people_not_personas" title="Permanent link">&para;</a></h3>
 <p>ペルソナは仮説や属性をマッシュアップしたものであるため、ペルソナはプロダクトをデザインするためには破壊的な影響をもつ。ペルソナは大雑把な対策や避けるべきことを考えるためには必要。例えば、ある特定の国の国民が製品ターゲットである場合に、緑色は悪いイメージがあるという国民性がある場合は、その色を使わないといった判断をする、といったことがあげられる。
 ペルソナという大雑把に分けたものに対して、製品AとBのどちらが好きか、AとBを選ぶ際の判断ポイントなどを訪ねてみても、そのペルソナに対して効果的なソリューションを提供することはおそらく難しい。ペルソナの中にもコンテキストによってモチベーションが変わると思われるため。</p>
 <p>Job storyはカスタマーインタビューから作られる。製品を作る前に顧客と話し、コンペティター製品や自分の製品を使う際の心配とそのコンテキストを発見する必要がある。</p>
 <p>ペルソナを好んで使う人は、得た情報を整理するためのほかの手法を知らない。</p>
 <p>ユーザーインタビューについては知りたければ<a href="http://jobstobedone.org/radio/the-mattress-interview-part-one/">こちらのPodcast</a></p>
-<h3 id="design_modular_job_stories_which_features_solutions_can_plug_into">Design Modular Job Stories Which Features (Solutions) Can Plug Into<a class="headerlink" href="#design_modular_job_stories_which_features_solutions_can_plug_into" title="Permanent link">#</a></h3>
+<h3 id="design_modular_job_stories_which_features_solutions_can_plug_into">Design Modular Job Stories Which Features (Solutions) Can Plug Into<a class="headerlink" href="#design_modular_job_stories_which_features_solutions_can_plug_into" title="Permanent link">&para;</a></h3>
 <p>Job storyで重要なことはソリューションに言及しないこと。User storyでは実装方法を定義することを推奨しているので、この点でもJob storyとUser storyは異なる。
 Job storyを解決するソリューションは開発チームを信頼して考えてもらい、スプリントバックログアイテムで管理してもらう?</p>
-<h3 id="add_forces_to_motivations">Add Forces To Motivations<a class="headerlink" href="#add_forces_to_motivations" title="Permanent link">#</a></h3>
+<h3 id="add_forces_to_motivations">Add Forces To Motivations<a class="headerlink" href="#add_forces_to_motivations" title="Permanent link">&para;</a></h3>
 <p>モチベーションに真意を加えることは、シチュエーションにコンテキストを加えることに似ている。
 ソリューションはその真意を削減する手助けをするものをデザインすればよい。</p>
 <p>e.g.</p>
@@ -364,9 +384,9 @@ Force: I’m irritated because I was in the middle of something…
 Force: I get nervous asking for help…
 Solution1:  that customers don’t have to wait long to get help.
 Solution2: Remind customers how common it is to ask for help.</p>
-<h3 id="job_stories_dont_have_to_be_from_a_specific_point_of_view">Job Stories Don’t Have To Be From A Specific Point Of View<a class="headerlink" href="#job_stories_dont_have_to_be_from_a_specific_point_of_view" title="Permanent link">#</a></h3>
+<h3 id="job_stories_dont_have_to_be_from_a_specific_point_of_view">Job Stories Don’t Have To Be From A Specific Point Of View<a class="headerlink" href="#job_stories_dont_have_to_be_from_a_specific_point_of_view" title="Permanent link">&para;</a></h3>
 <p>Job storyは「私」という視点から書かなければいけないものではない。第三者視点から書いてもよい。</p>
-<h1 id="recap">Recap<a class="headerlink" href="#recap" title="Permanent link">#</a></h1>
+<h1 id="recap">Recap<a class="headerlink" href="#recap" title="Permanent link">&para;</a></h1>
 <p>Better job story is like following</p>
 <ul>
 <li>In 'when part', adding context to situation concretely</li>
@@ -378,7 +398,7 @@ Solution2: Remind customers how common it is to ask for help.</p>
 <li>Adding forces to motivations</li>
 <li>We can design its solution to reduce forces of motivations</li>
 </ul>
-<h4 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">#</a></h4>
+<h4 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h4>
 <ul>
 <li>https://jtbd.info/replacing-the-user-story-with-the-job-story-af7cdee10c27</li>
 <li>https://jtbd.info/5-tips-for-writing-a-job-story-7c9092911fc9</li>
@@ -390,6 +410,8 @@ Solution2: Remind customers how common it is to ask for help.</p>
               
               
                 
+
+
               
             </article>
           </div>
@@ -425,13 +447,11 @@ Solution2: Remind customers how common it is to ask for help.</p>
       <div class="md-footer-copyright">
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
-        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
-      
-        
       
     </div>
   </div>
@@ -439,14 +459,11 @@ Solution2: Remind customers how common it is to ask for help.</p>
       
     </div>
     
-      <script src="../../assets/javascripts/application-84693e5e49.js"></script>
+      <script src="../../assets/javascripts/application.245445c6.js"></script>
       
-      <script>app.initialize({version:"0.17.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-      
-    
-    
       
     
   </body>
