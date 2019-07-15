@@ -2,15 +2,12 @@
 
 <p align="center">rkaneko's miscellaneous notes.</p>
 
-<p align="center">
-  [![License: MIT][license]](https://opensource.org/licenses/MIT)
-  [![build status][circleci-image]][circleci-url]
-  [![python][python]]()
-  [![mkdocs][mkdocs-badge]]()
-</p>
-
 <br>
 
+[![License: MIT][license]](https://opensource.org/licenses/MIT)
+[![build status][circleci-image]][circleci-url]
+[![python][python]]()
+[![mkdocs][mkdocs-badge]][gh-pages-url]
 
 #### Prerequisites
 
@@ -55,8 +52,9 @@ $ pipenv run serve:dev
   - Add git config commands and `add_ssh_keys` operation to [.circleci/config.yml](.circleci/config.yml)
 
 
-[circleci-image]: https://circleci.com/gh/rkaneko/misc-notes.svg?style=shield
+[circleci-image]: https://circleci.com/gh/rkaneko/misc-notes.svg?style=shield&logo=circleci
 [circleci-url]: https://circleci.com/gh/rkaneko/misc-notes
-[license]: https://img.shields.io/npm/l/misc-notes.svg
+[license]: https://img.shields.io/badge/licence-MIT-blue.svg
 [python]: https://img.shields.io/badge/-Python-F9DC3E.svg?logo=python&style=flat
 [mkdocs-badge]: https://img.shields.io/badge/mkdocs--4FC08D.svg?logo=markdown&style=plastic
+[gh-pages-url]: https://rkaneko.github.io/misc-notes/
