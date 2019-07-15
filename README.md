@@ -1,30 +1,62 @@
-misc notes
-===
+<h1 align="center">misc notes</h1>
 
-[![CircleCI](https://circleci.com/gh/rkaneko/misc-notes.svg?style=svg)](https://circleci.com/gh/rkaneko/misc-notes)
+<p align="center">rkaneko's miscellaneous notes.</p>
+
+<p align="center">
+  [![License: MIT][license]](https://opensource.org/licenses/MIT)
+  [![build status][circleci-image]][circleci-url]
+  [![python][python]]()
+  [![mkdocs][mkdocs-badge]]()
+</p>
+
+<br>
+
 
 #### Prerequisites
 
 ```bash
-$ docker-compose -v
-docker-compose version 1.14.0
+$ pip install --user pipenv
 ```
 
 ### Usage
 
+- Pipenv & virtualenv
+
 ```bash
-# build docker image for mkdocs
-$ docker-compose -f tools/docker/docker-compose.yml build --no-cache mkdocs_base
+# use pipenv virtualenv
+$ PIPENV_VENV_IN_PROJECT=true pipenv shell
 
-# mkdocs new project
-$ docker-compose -f tools/docker/docker-compose.yml run --rm mkdocs_init
-
-# build static files
-$ docker-compose -f tools/docker/docker-compose.yml run --rm mkdocs_build
-
-# serve using local dev server
-$ docker-compose -f tools/docker/docker-compose.yml up --force-recreate mkdocs_serve
-
-# run with nginx
-$ docker-compose -f toos/docker/docker-compose-site.yml up --force-recreate nginx
+# install dependencies
+$ pipenv install --dev
 ```
+
+- Mkdocs
+
+```bash
+# build mkdocs
+$ pipenv run build
+
+# serve on local environment
+$ pipenv run serve:dev
+# Access http://localhost:8000/
+```
+
+### Deployment
+
+- Create a merge request to `master` branch
+- After merging that MR to `master`, then CircleCI will deploy on GitHub pages.
+
+#### Configuration for deploying using circleci
+
+- See [Deploying documentation to GitHub Pages with continuous integration @ circleci.com/blog](https://circleci.com/blog/simplifying-your-ci-cd-build-pipeline-to-gke-with-circleci-orbs/)
+  - Generate ssh key pair using `ssh-keygen`.
+  - Add a private ssh key to [CircleCI SSH Permissions](https://circleci.com/gh/rkaneko/misc-notes/edit#ssh)
+  - Add a public ssh key to [GitHub project settings/keys](https://github.com/rkaneko/misc-notes/settings/keys)
+  - Add git config commands and `add_ssh_keys` operation to [.circleci/config.yml](.circleci/config.yml)
+
+
+[circleci-image]: https://circleci.com/gh/rkaneko/misc-notes.svg?style=shield
+[circleci-url]: https://circleci.com/gh/rkaneko/misc-notes
+[license]: https://img.shields.io/npm/l/misc-notes.svg
+[python]: https://img.shields.io/badge/-Python-F9DC3E.svg?logo=python&style=flat
+[mkdocs-badge]: https://img.shields.io/badge/mkdocs--4FC08D.svg?logo=markdown&style=plastic

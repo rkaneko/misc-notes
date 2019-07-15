@@ -25,6 +25,7 @@ PyYAML = "==5.1.1"
 "build" = "mkdocs build --clean -f mkdocs.yml"
 "serve:dev" = "mkdocs serve -f mkdocs.yml"
 "circleci:check" = "circleci config validate -c .circleci/config.yml"
+"deploy:gh-pages" = "mkdocs gh-deploy --clean -b gh-pages -r origin"
 
 [requires]
 python_version = "3.7"
