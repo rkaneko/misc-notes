@@ -6,7 +6,7 @@
     "default:automergeBranchPush"
   ],
   "pipenv": {
-    "enable": true
+    "enabled": true
   },
   "upgradeInRange": true,
   "labels": [
