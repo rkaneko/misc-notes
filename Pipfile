@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-click = "==7.0"
+click = "==7.1.2"
 fontawesome-markdown = "==0.2.6"
 livereload = "==2.6.1"
 mkdocs = "==1.0.4"
